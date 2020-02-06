@@ -8,10 +8,10 @@ namespace ENG.Creatures.Domain.Core
 
         bool Negated { get; }
 
+        bool CanNagate { get; }
+
         void Resolve(Card target);
 
         void Negate(Card target);
-
-        bool CanNagate();
     }
 }

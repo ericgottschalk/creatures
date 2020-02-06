@@ -81,6 +81,10 @@ namespace ENG.Creatures.Domain.Core
 
         public void ResetLife() => Life = originalLife;
 
+        public bool PowerGreaterThanOriginal => Power > originalPower;
+
+        public bool LifeGreaterThanOriginal => Life > originalLife;
+
         private void ValideteContruction(uint power, uint life)
         {
             if (power < 0)

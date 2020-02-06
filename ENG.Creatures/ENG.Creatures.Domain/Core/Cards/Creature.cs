@@ -68,7 +68,15 @@ namespace ENG.Creatures.Domain.Core.Cards
 
         public bool IsAlive() => Stats.Life > 0;
 
-        public bool CanTakeDamage()
+        public void ResolveDamage(uint damage)
+        {
+            if (CanTakeDamage())
+            {
+                Stats.DecreaseLife(damage);
+            }
+        }
+
+        private bool CanTakeDamage()
         {
             var barrier = Conditions.SingleOrDefault(t => t is BarrierCondition);
 
@@ -79,14 +87,6 @@ namespace ENG.Creatures.Domain.Core.Cards
             }
 
             return true;
-        }
-
-        public void ResolveDamage(uint damage)
-        {
-            if (CanTakeDamage())
-            {
-                Stats.DecreaseLife(damage);
-            }
         }
 
         private void ResolveBattleDamage(Creature attacker, Creature defensor)
